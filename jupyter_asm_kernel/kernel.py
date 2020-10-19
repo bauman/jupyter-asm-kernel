@@ -192,7 +192,7 @@ class ASMKernel(Kernel):
             pc.write_contents()
             if pc.returncode != 0:  # Compilation failed
                 self._write_to_stderr(
-                    f"[C kernel] yasm exited with code {pc.returncode}, the executable will not be executed"
+                    f"[ASM kernel] compiler exited with code {pc.returncode}, the executable will not be executed"
                 )
                 return {'status': 'ok', 'execution_count': self.execution_count, 'payload': [],
                         'user_expressions': {}}
@@ -205,7 +205,7 @@ class ASMKernel(Kernel):
             pl.write_contents()
             if pl.returncode != 0:  # Compilation failed
                 self._write_to_stderr(
-                    "[C kernel] gcc (linker) exited with code {}, the executable will not be executed".format(
+                    "[ASM kernel] linker exited with code {}, the executable will not be executed".format(
                         pl.returncode))
                 return {'status': 'ok', 'execution_count': self.execution_count, 'payload': [],
                         'user_expressions': {}}
